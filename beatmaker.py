@@ -139,6 +139,164 @@ class Lead:
         return out
 
 
+# ======================== GENRE PRESETS ========================
+
+GENRES = {
+    'detroit': {
+        'name': 'Detroit Techno', 'bpm': 128,
+        'patterns': [
+            [.9,0,0,0, .9,0,0,0, .9,0,0,0, .9,0,0,0],   # kick
+            [0,0,0,0, .8,0,0,0, 0,0,0,0, .8,0,0,0],       # snare
+            [0,0,0,0, .7,0,0,0, 0,0,0,0, .7,0,0,0],       # clap
+            [0,0,.7,0, 0,0,.7,0, 0,0,.7,0, 0,0,.7,0],     # ch hat
+            [0,0,0,0, 0,0,0,0, 0,0,.6,0, 0,0,0,0],        # oh hat
+            [.8,0,0,.7, 0,0,.8,0, .8,0,0,.7, 0,0,0,0],    # bass
+            [0]*16,                                          # lead
+        ],
+        'bass_notes': [36,0,0,36, 0,0,43,0, 36,0,0,36, 0,0,0,0],
+        'lead_notes': [0]*16,
+        'bass_cfg': {'waveform':'saw','cutoff':600,'env_mod':2500,'drive':1.5},
+    },
+    'berlin': {
+        'name': 'Berlin Hard Techno', 'bpm': 140,
+        'patterns': [
+            [.9,0,0,0, .9,0,.7,0, .9,0,0,0, .9,0,0,.6],  # kick
+            [0,0,0,0, 0,0,0,.7, 0,0,0,0, 0,0,.7,0],       # snare
+            [0,0,0,0, .8,0,0,0, 0,0,0,0, .8,0,0,0],       # clap
+            [.9,.4,.7,.4, .9,.4,.7,.4, .9,.4,.7,.4, .9,.4,.7,.4], # ch hat
+            [0,0,0,0, 0,0,.5,0, 0,0,0,0, 0,0,.5,0],       # oh hat
+            [.8,0,.7,0, 0,0,.8,0, .8,0,0,.7, 0,0,.8,0],   # bass
+            [0]*16,
+        ],
+        'bass_notes': [33,0,34,0, 0,0,33,0, 33,0,0,36, 0,0,33,0],
+        'lead_notes': [0]*16,
+        'bass_cfg': {'waveform':'saw','cutoff':400,'env_mod':4000,'drive':2.5},
+    },
+    'acid': {
+        'name': 'Acid Techno', 'bpm': 138,
+        'patterns': [
+            [.9,0,0,0, .9,0,0,.7, .9,0,0,0, .9,0,.7,0],  # kick
+            [0,0,0,0, .8,0,0,0, 0,0,0,0, .8,0,0,0],       # snare
+            [0,0,0,0, 0,0,0,0, .7,0,0,0, 0,0,0,0],        # clap
+            [.8,0,.6,0, .8,0,.6,0, .8,0,.6,0, .8,0,.5,.4], # ch hat
+            [0,0,0,0, 0,0,0,0, 0,0,.5,0, 0,0,0,0],        # oh hat
+            [.8,0,.7,.8, 0,.7,.8,0, .7,.8,0,.7, 0,.8,0,.7],# bass
+            [0]*16,
+        ],
+        'bass_notes': [36,0,39,41, 0,43,36,0, 39,36,0,43, 0,41,0,36],
+        'lead_notes': [0]*16,
+        'bass_cfg': {'waveform':'square','cutoff':500,'env_mod':5000,'drive':2.0},
+    },
+    'minimal': {
+        'name': 'Minimal Techno', 'bpm': 125,
+        'patterns': [
+            [.9,0,0,0, .9,0,0,0, .9,0,0,0, .9,0,0,0],    # kick
+            [0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,.6],        # snare
+            [0,0,0,0, .6,0,0,0, 0,0,0,0, 0,0,0,0],        # clap
+            [0,0,.5,0, 0,0,.5,0, 0,0,.5,0, 0,.3,.5,0],    # ch hat
+            [0]*16,                                          # oh hat
+            [.7,0,0,0, 0,0,0,0, .7,0,0,0, 0,0,.6,0],      # bass
+            [0,0,.5,0, 0,0,0,0, 0,0,0,0, .5,0,0,0],       # lead
+        ],
+        'bass_notes': [36,0,0,0, 0,0,0,0, 43,0,0,0, 0,0,36,0],
+        'lead_notes': [72,0,75,0, 0,0,0,0, 0,0,0,0, 77,0,0,0],
+        'bass_cfg': {'waveform':'saw','cutoff':300,'env_mod':1200,'drive':1.2},
+    },
+    'afro': {
+        'name': 'Afro House', 'bpm': 122,
+        'patterns': [
+            [.9,0,0,0, .9,0,0,0, .9,0,0,0, .9,0,0,0],    # kick
+            [0,0,0,0, .8,0,0,.4, 0,0,0,0, .8,0,.4,0],     # snare (ghost rimshot)
+            [0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0],         # clap
+            [0,.6,0,.6, 0,.6,0,.6, 0,.6,0,.6, 0,.6,0,.6],  # ch hat (offbeat)
+            [0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0],         # oh hat
+            [.7,0,0,0, 0,0,0,0, .7,0,0,0, 0,0,.6,0],      # bass (minimal)
+            [0,0,.5,0, 0,.5,0,0, .5,0,0,.5, 0,0,.5,0],    # lead (conga/perc feel)
+        ],
+        'bass_notes': [36,0,0,0, 0,0,0,0, 43,0,0,0, 0,0,36,0],
+        'lead_notes': [65,0,67,0, 0,65,0,0, 67,0,0,65, 0,0,67,0],
+        'bass_cfg': {'waveform':'saw','cutoff':250,'env_mod':800,'drive':1.0},
+    },
+    'melodic': {
+        'name': 'Melodic Techno', 'bpm': 124,
+        'patterns': [
+            [.9,0,0,0, .9,0,0,0, .9,0,0,0, .9,0,0,0],    # kick
+            [0,0,0,0, .7,0,0,0, 0,0,0,0, .7,0,0,0],       # snare
+            [0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0],         # clap
+            [.9,.5,.7,.5, .9,.5,.7,.5, .9,.5,.7,.5, .9,.5,.7,.5], # 16th hats
+            [0,0,0,0, 0,0,0,0, .5,0,0,0, 0,0,0,0],        # oh hat
+            [.7,0,0,0, 0,0,.6,0, .7,0,0,0, 0,.5,0,0],     # bass
+            [.5,0,0,.4, 0,0,.5,0, 0,.4,0,0, .5,0,0,.4],   # lead (arp)
+        ],
+        'bass_notes': [36,0,0,0, 0,0,43,0, 36,0,0,0, 0,41,0,0],
+        'lead_notes': [72,0,0,70, 0,0,72,0, 0,75,0,0, 77,0,0,72],
+        'bass_cfg': {'waveform':'saw','cutoff':500,'env_mod':2000,'drive':1.3},
+    },
+    'ukgarage': {
+        'name': 'UK Garage / 2-Step', 'bpm': 132,
+        'patterns': [
+            [.9,0,0,0, 0,0,.8,0, 0,.7,0,0, 0,0,.7,0],    # kick (broken!)
+            [0,0,0,0, .8,0,0,0, 0,0,0,0, .8,0,0,0],       # snare
+            [0,0,0,0, .6,0,0,0, 0,0,0,0, .6,0,0,0],       # clap
+            [0,.7,0,.7, 0,.7,0,.7, 0,.7,0,.7, 0,.7,0,.7],  # ch hat (offbeat)
+            [0,0,0,0, 0,0,0,0, 0,0,.5,0, 0,0,0,0],        # oh hat
+            [.8,0,0,.6, 0,.5,0,0, .7,0,.5,0, 0,0,.6,0],   # bass (bouncy)
+            [0]*16,
+        ],
+        'bass_notes': [36,0,0,38, 0,41,0,0, 43,0,41,0, 0,0,38,0],
+        'lead_notes': [0]*16,
+        'bass_cfg': {'waveform':'saw','cutoff':700,'env_mod':2000,'drive':1.3},
+    },
+    'trance': {
+        'name': 'Uplifting Trance', 'bpm': 138,
+        'patterns': [
+            [.9,0,0,0, .9,0,0,0, .9,0,0,0, .9,0,0,0],    # kick
+            [0,0,0,0, .8,0,0,0, 0,0,0,0, .8,0,0,0],       # snare
+            [0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0],         # clap
+            [0,.7,0,.7, 0,.7,0,.7, 0,.7,0,.7, 0,.7,0,.7],  # offbeat oh
+            [0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0],         # oh hat
+            [0,.8,0,0, 0,.8,0,0, 0,.8,0,0, 0,.8,0,0],     # bass (anti-kick)
+            [.5,0,.4,0, .5,0,.6,0, .5,0,.4,0, .6,0,.5,0], # lead (arp)
+        ],
+        'bass_notes': [36,36,0,0, 0,36,0,0, 0,43,0,0, 0,41,0,0],
+        'lead_notes': [72,0,75,0, 72,0,77,0, 75,0,72,0, 77,0,75,0],
+        'bass_cfg': {'waveform':'saw','cutoff':600,'env_mod':2500,'drive':1.5},
+    },
+    'deephouse': {
+        'name': 'Deep House', 'bpm': 122,
+        'patterns': [
+            [.9,0,0,0, .9,0,0,0, .9,0,0,0, .9,0,0,0],    # kick
+            [0,0,0,0, .7,0,0,.3, 0,0,0,0, .7,0,0,0],      # snare (ghost on 8)
+            [0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0],         # clap
+            [.7,0,.6,.5, .7,0,.6,.5, .7,0,.6,.5, .7,0,.6,.5], # ch hat (shuffle)
+            [0,.5,0,0, 0,.5,0,0, 0,.5,0,0, 0,.5,0,0],     # oh hat (offbeat)
+            [.8,0,0,0, .6,0,0,.5, .7,0,.5,0, 0,0,.6,0],   # bass (melodic)
+            [0]*16,
+        ],
+        'bass_notes': [36,0,0,0, 43,0,0,41, 36,0,48,0, 0,0,43,0],
+        'lead_notes': [0]*16,
+        'bass_cfg': {'waveform':'saw','cutoff':350,'env_mod':1500,'drive':1.1},
+    },
+    'fredagain': {
+        'name': 'Fred Again / Emotional', 'bpm': 128,
+        'patterns': [
+            [.7,0,0,0, 0,0,.6,0, 0,.6,0,0, 0,0,0,0],     # kick (sparse, broken)
+            [0,0,0,0, .7,0,0,0, 0,0,0,0, .7,0,0,0],       # snare
+            [0,0,0,0, .6,0,0,0, 0,0,0,0, .6,0,0,.4],      # clap
+            [0,.5,0,.5, 0,.5,0,.5, 0,.5,0,.5, 0,.5,0,.5],  # ch hat (offbeat)
+            [0,0,0,0, 0,0,0,0, 0,0,.4,0, 0,0,0,0],        # oh hat
+            [.6,0,0,.5, 0,0,0,0, .6,0,0,0, 0,.4,0,0],     # bass (emotional)
+            [.4,0,0,0, 0,.4,0,0, 0,0,.5,0, 0,0,0,.4],     # lead (melody)
+        ],
+        'bass_notes': [36,0,0,39, 0,0,0,0, 43,0,0,0, 0,41,0,0],
+        'lead_notes': [72,0,0,0, 0,75,0,0, 0,0,77,0, 0,0,0,72],
+        'bass_cfg': {'waveform':'saw','cutoff':500,'env_mod':1800,'drive':1.2},
+    },
+}
+
+GENRE_KEYS = list(GENRES.keys())
+
+
 # ======================== BEAT MAKER ========================
 
 TRACK_NAMES = ['KICK', 'SNARE', 'CLAP', 'C.HAT', 'O.HAT', 'BASS', 'LEAD']
@@ -177,6 +335,8 @@ class BeatMaker:
         self.sample_pos = 0
         self._last_step = -1
         self.mode = 'step'  # 'step' or 'note'
+        self.current_genre = 'none'
+        self.export_count = 0
 
         # Instruments
         self.kick = Kick()
@@ -189,6 +349,22 @@ class BeatMaker:
 
         # Volumes
         self.volumes = [0.9, 0.6, 0.5, 0.35, 0.3, 0.7, 0.5]
+
+    def load_genre(self, genre_key):
+        """Load a genre preset into all tracks."""
+        if genre_key not in GENRES:
+            return
+        g = GENRES[genre_key]
+        self.current_genre = genre_key
+        self.bpm = g['bpm']
+        for i in range(7):
+            self.patterns[i] = [float(v) for v in g['patterns'][i]]
+        self.bass_notes = list(g['bass_notes'])
+        self.lead_notes = list(g['lead_notes'])
+        # Apply bass config
+        for k, v in g.get('bass_cfg', {}).items():
+            if hasattr(self.bass, k):
+                setattr(self.bass, k, v)
 
     @property
     def samples_per_step(self):
@@ -286,8 +462,9 @@ class BeatMaker:
         # Clear screen and draw
         lines = []
         lines.append('')
-        lines.append(f'  {BOLD}TECHNOBOX BEAT MAKER{RESET}   BPM: {self.bpm}   {"▶ PLAYING" if self.playing else "■ STOPPED"}')
-        lines.append(f'  Track: {TRACK_COLORS[self.selected_track]}{BOLD}{TRACK_NAMES[self.selected_track]}{RESET}   Mode: {self.mode.upper()}')
+        genre_label = GENRES[self.current_genre]['name'] if self.current_genre in GENRES else 'Custom'
+        lines.append(f'  {BOLD}TECHNOBOX BEAT MAKER{RESET}   BPM: {self.bpm}   {"▶ PLAYING" if self.playing else "■ STOPPED"}   [{genre_label}]')
+        lines.append(f'  Track: {TRACK_COLORS[self.selected_track]}{BOLD}{TRACK_NAMES[self.selected_track]}{RESET}')
         lines.append('')
 
         # Step numbers
@@ -362,14 +539,14 @@ class BeatMaker:
             lines.append(f'{DIM}{nr}{RESET}')
 
         lines.append('')
-        lines.append(f'  {DIM}CONTROLS:{RESET}')
-        lines.append(f'  {DIM}a-k / z-, = toggle steps 1-8 / 9-16    TAB = next track{RESET}')
-        lines.append(f'  {DIM}SPACE = play/stop   +/- = BPM   G = AI fill   C = clear{RESET}')
-
+        lines.append(f'  {DIM}STEP KEYS: a s d f g h j k (1-8)  z x c v b n m , (9-16){RESET}')
+        lines.append(f'  {DIM}TAB=next track  SPACE=play/stop  +/-=BPM  G=AI fill  C=clear{RESET}')
         if self.selected_track >= 5:
-            lines.append(f'  {DIM}UP/DOWN arrows = change note at current step   [ ] = octave{RESET}')
-
-        lines.append(f'  {DIM}E = export WAV   Q = quit{RESET}')
+            lines.append(f'  {DIM}UP/DOWN=change note  [ ]=octave shift{RESET}')
+        lines.append(f'  {DIM}GENRES (Shift+Number):{RESET}')
+        lines.append(f'  {DIM}!=Detroit @=Berlin #=Acid $=Minimal %=Afro ^=Melodic{RESET}')
+        lines.append(f'  {DIM}&=UKGarage *=Trance (=DeepHouse )=FredAgain{RESET}')
+        lines.append(f'  {DIM}E=export WAV  Q=quit{RESET}')
 
         # Move cursor up and redraw
         output = '\033[H'  # home
@@ -412,6 +589,28 @@ class BeatMaker:
         elif ch in ('C',):  # capital C only
             self.clear_track()
 
+        # Load genre (0-9 for genres)
+        elif ch == '!':  # shift+1
+            self.load_genre('detroit')
+        elif ch == '@':  # shift+2
+            self.load_genre('berlin')
+        elif ch == '#':  # shift+3
+            self.load_genre('acid')
+        elif ch == '$':  # shift+4
+            self.load_genre('minimal')
+        elif ch == '%':  # shift+5
+            self.load_genre('afro')
+        elif ch == '^':  # shift+6
+            self.load_genre('melodic')
+        elif ch == '&':  # shift+7
+            self.load_genre('ukgarage')
+        elif ch == '*':  # shift+8
+            self.load_genre('trance')
+        elif ch == '(':  # shift+9
+            self.load_genre('deephouse')
+        elif ch == ')':  # shift+0
+            self.load_genre('fredagain')
+
         # Note editing for bass/lead
         elif ch == '[':
             if self.selected_track == 5:
@@ -440,8 +639,11 @@ class BeatMaker:
         return None
 
     def export(self):
-        """Export beat as WAV."""
-        filename = os.path.expanduser('~/technobox/exports/my_beat.wav')
+        """Export beat as WAV with unique filename."""
+        import datetime
+        ts = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
+        genre_tag = self.current_genre if self.current_genre != 'none' else 'custom'
+        filename = os.path.expanduser(f'~/technobox/exports/beat_{genre_tag}_{ts}.wav')
         os.makedirs(os.path.dirname(filename), exist_ok=True)
 
         print(f'\n  Exporting 8 bars to {filename}...')
