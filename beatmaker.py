@@ -78,7 +78,7 @@ class Clap:
         if not self.active: return np.zeros(n)
         t=(self.t+np.arange(n,dtype=np.float64))/SR; self.t+=n
         noise=np.random.randn(n)
-        env=sum((t>=o)&(t<o+.005)*np.exp(-(t-o)/.002)*.5 for o in [0,.01,.02,.035])
+        env=sum(((t>=o)&(t<o+.005)).astype(float)*np.exp(-(t-o)/.002)*.5 for o in [0,.01,.02,.035])
         env+=np.exp(-t/.12)*.3
         if t[-1]>.5: self.active=False
         return noise*env*self._v
