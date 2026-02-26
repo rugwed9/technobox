@@ -65,8 +65,11 @@ class TechnoBoxApp:
         self._lead_release_countdown = 0
         self._pad_release_countdown = 0
 
-        # Apply initial style
+        # Apply initial style and auto-generate a beat
         self._apply_style(self.current_style)
+        self.ai_generate()
+        self.clock.playing = True
+        self.engine.state.playing = True
 
     def run(self):
         """Start the application."""
